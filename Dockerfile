@@ -1,9 +1,5 @@
 FROM node:22-bookworm
 
-LABEL org.opencontainers.image.source="https://github.com/phioranex/openclaw-docker"
-LABEL org.opencontainers.image.description="Pre-built OpenClaw (Clawbot) Docker image"
-LABEL org.opencontainers.image.licenses="MIT"
-
 # Install system dependencies (including Homebrew prerequisites)
 RUN apt-get update && apt-get install -y \
     git \
@@ -36,7 +32,7 @@ RUN mkdir -p /home/linuxbrew/.linuxbrew/Homebrew && \
     ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew && \
     chown -R linuxbrew:linuxbrew /home/linuxbrew/.linuxbrew && \
     chmod -R g+rwX /home/linuxbrew/.linuxbrew
-    
+
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 ENV HOMEBREW_NO_AUTO_UPDATE=1
 ENV HOMEBREW_NO_INSTALL_CLEANUP=1
