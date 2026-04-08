@@ -16,7 +16,7 @@ The image is built for `linux/amd64` and `linux/arm64` (including Synology NAS a
 ### 1. Create the data directories
 
 ```bash
-mkdir -p ~/.openclaw/workspace
+mkdir -p openclaw/workspace
 ```
 
 ### 2. Run onboarding
@@ -25,7 +25,7 @@ Onboarding configures your AI provider, channels, and gateway settings. Config i
 
 ```bash
 docker run -it --rm \
-  -v ~/.openclaw:/home/node/.openclaw \
+  -v ./openclaw:/home/node/.openclaw \
   ghcr.io/sysrex/openclaw-docker:latest onboard
 ```
 
@@ -86,8 +86,8 @@ Both ports are bound to `127.0.0.1` in the standalone Docker example above. When
 
 | Host path | Container path | Purpose |
 |-----------|---------------|---------|
-| `~/.openclaw` | `/home/node/.openclaw` | Config, credentials, session data |
-| `~/.openclaw/workspace` | `/home/node/.openclaw/workspace` | Agent workspace |
+| `./openclaw` | `/home/node/.openclaw` | Config, credentials, session data |
+| `./openclaw/workspace` | `/home/node/.openclaw/workspace` | Agent workspace |
 
 Config and workspace data persist across container restarts and image updates.
 
@@ -108,7 +108,7 @@ docker pull ghcr.io/sysrex/openclaw-docker:latest
 docker compose up -d openclaw-gateway
 ```
 
-Your config in `~/.openclaw` is not affected by updates.
+Your config in `./openclaw` is not affected by updates.
 
 ## Building from Source
 
