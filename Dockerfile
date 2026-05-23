@@ -82,6 +82,9 @@ RUN mkdir -p /usr/local/share/ca-certificates && \
 
 USER node
 
+# Install Gemini CLI via Homebrew
+RUN brew install gemini-cli
+
 # Install Playwright browsers for the node user
 # Use NODE_EXTRA_CA_CERTS to point to accessible certificate bundle
 RUN NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/ca-certificates.crt npx -y playwright@latest install chromium
