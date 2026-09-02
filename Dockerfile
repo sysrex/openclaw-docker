@@ -82,10 +82,6 @@ RUN mkdir -p /usr/local/share/ca-certificates && \
 
 USER node
 
-# Install Gemini CLI via Homebrew
-# Homebrew may return non-zero when dependency post-install hooks warn, even if gemini-cli was installed.
-RUN brew install gemini-cli || (brew list gemini-cli >/dev/null 2>&1 && echo "gemini-cli installed with post-install warnings")
-
 # Install Playwright browsers for the node user
 # Use NODE_EXTRA_CA_CERTS to point to accessible certificate bundle
 RUN NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/ca-certificates.crt npx -y playwright@latest install chromium
